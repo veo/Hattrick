@@ -34,7 +34,7 @@ func VerticalLine(length, strong int) fyne.CanvasObject {
 
 func Textbox(text string) fyne.CanvasObject {
 	inputbox := widget.NewMultiLineEntry()
-	inputbox.Wrapping = fyne.TextWrapWord
+	//inputbox.Wrapping = fyne.TextWrapWord
 	inputbox.SetPlaceHolder(text)
 	box := BorderBody(1040, 140, inputbox)
 	return box
