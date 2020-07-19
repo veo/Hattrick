@@ -8,10 +8,10 @@ import (
 
 type HatTrickTheme struct{}
 
-func (HatTrickTheme) TextFont() fyne.Resource     { return Font }
-func (HatTrickTheme) TextBoldFont() fyne.Resource { return Font }
+func (HatTrickTheme) TextFont() fyne.Resource     { return cnfont }
+func (HatTrickTheme) TextBoldFont() fyne.Resource { return cnfont }
 
-func (HatTrickTheme) BackgroundColor() color.Color { return theme.LightTheme().BackgroundColor() }
+func (HatTrickTheme) BackgroundColor() color.Color { return color.Opaque }
 func (HatTrickTheme) ButtonColor() color.Color     { return theme.LightTheme().ButtonColor() }
 func (HatTrickTheme) DisabledButtonColor() color.Color {
 	return theme.LightTheme().DisabledButtonColor()
@@ -27,7 +27,7 @@ func (HatTrickTheme) PrimaryColor() color.Color      { return theme.LightTheme()
 func (HatTrickTheme) FocusColor() color.Color        { return theme.LightTheme().FocusColor() }
 func (HatTrickTheme) ScrollBarColor() color.Color    { return theme.LightTheme().ScrollBarColor() }
 func (HatTrickTheme) ShadowColor() color.Color       { return theme.LightTheme().ShadowColor() }
-func (HatTrickTheme) TextSize() int                  { return theme.LightTheme().TextSize() }
+func (HatTrickTheme) TextSize() int                  { return 10 }
 func (HatTrickTheme) TextItalicFont() fyne.Resource  { return theme.LightTheme().TextItalicFont() }
 func (HatTrickTheme) TextBoldItalicFont() fyne.Resource {
 	return theme.LightTheme().TextBoldItalicFont()
