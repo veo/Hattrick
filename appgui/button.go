@@ -18,6 +18,13 @@ func makeButtonList(count int) []fyne.CanvasObject {
 	return items
 }
 
+func Button() fyne.CanvasObject {
+	bt := widget.NewButton("URL编码UTF-8", func() {
+		fmt.Println("test")
+	})
+	return bt
+}
+
 func test() {
 	fmt.Println("123")
 

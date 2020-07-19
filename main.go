@@ -12,16 +12,19 @@ func main() {
 	app := app.New()
 	app.SetIcon(appgui.Icon)
 	app.Settings().SetTheme(&appgui.HatTrickTheme{})
-	//app.Settings().SetTheme(theme.LightTheme())
 	w := app.NewWindow("Hattrick")
-	//w.SetContent(appgui.Bottonfrom())
+	textbox := &appgui.Textbox{}
+	//w.SetContent(appgui.Button())
 	w.SetContent(widget.NewVBox(
-		appgui.Textbox("Encode"),
-		widget.NewButton("Button", func() { fmt.Println("button tapped!") }),
-		appgui.Textbox("Result"),
-		widget.NewButton("Button", func() { fmt.Println("button tapped!") }),
-		appgui.Textbox("Decode"),
-		widget.NewButton("Quit", func() { app.Quit() }),
+		textbox.InputBox(),
+		widget.NewButton("Encode", func() {
+			textbox.EncodeText.SetText(textbox.InputText.Text)
+		}),
+		textbox.EncodeBox(),
+		widget.NewButton("Decode", func() {
+			textbox.DecodeText.SetText(textbox.EncodeText.Text)
+		}),
+		textbox.DecodeBox(),
 	))
 	w.Resize(fyne.NewSize(1100, 750))
 	w.ShowAndRun()

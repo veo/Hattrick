@@ -8,6 +8,12 @@ import (
 	"image/color"
 )
 
+type Textbox struct {
+	InputText  *widget.Entry
+	EncodeText *widget.Entry
+	DecodeText *widget.Entry
+}
+
 func BorderBody(width, hight int, body fyne.CanvasObject) *fyne.Container {
 	top := HorizontalLine(width, 1)
 	bottom := HorizontalLine(width, 1)
@@ -32,10 +38,25 @@ func VerticalLine(length, strong int) fyne.CanvasObject {
 	return rect
 }
 
-func Textbox(text string) fyne.CanvasObject {
-	inputbox := widget.NewMultiLineEntry()
-	//inputbox.Wrapping = fyne.TextWrapWord
-	inputbox.SetPlaceHolder(text)
-	box := BorderBody(1040, 140, inputbox)
+func (t *Textbox) InputBox() fyne.CanvasObject {
+	t.InputText = widget.NewMultiLineEntry()
+	t.InputText.Wrapping = fyne.TextWrapWord
+	t.InputText.SetPlaceHolder("inputText")
+	box := BorderBody(1040, 140, t.InputText)
+	return box
+}
+func (t *Textbox) EncodeBox() fyne.CanvasObject {
+	t.EncodeText = widget.NewMultiLineEntry()
+	t.EncodeText.Wrapping = fyne.TextWrapWord
+	t.EncodeText.SetPlaceHolder("encodeText")
+	box := BorderBody(1040, 140, t.EncodeText)
+	return box
+}
+
+func (t *Textbox) DecodeBox() fyne.CanvasObject {
+	t.DecodeText = widget.NewMultiLineEntry()
+	t.DecodeText.Wrapping = fyne.TextWrapWord
+	t.DecodeText.SetPlaceHolder("decodeText")
+	box := BorderBody(1040, 140, t.DecodeText)
 	return box
 }
