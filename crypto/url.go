@@ -2,7 +2,6 @@ package crypto
 
 import (
 	"bytes"
-	"encoding/base64"
 	"golang.org/x/text/encoding/simplifiedchinese"
 	"golang.org/x/text/transform"
 	"io/ioutil"
@@ -16,24 +15,43 @@ func UrlEncode_UTF8(data string) string {
 func UrlEncode_GBK(data string) string {
 	encoder := simplifiedchinese.GBK.NewEncoder()
 	reader := transform.NewReader(bytes.NewReader([]byte(data)), encoder)
-	d, _ := ioutil.ReadAll(reader)
+	d, err := ioutil.ReadAll(reader)
+	if err != nil {
+		return err.Error()
+	}
 	return url.PathEscape(string(d))
 }
 
 func UrlEncode_ALL(data string) string {
-	return urlencodeall(data)
+	encoder := simplifiedchinese.GBK.NewEncoder()
+	reader := transform.NewReader(bytes.NewReader([]byte(data)), encoder)
+	d, err := ioutil.ReadAll(reader)
+	if err != nil {
+		return err.Error()
+	}
+	return urlencodeall(string(d))
 }
 
 func UrlDecode_UTF8(data string) string {
-	m, _ := base64.StdEncoding.DecodeString(data)
-	return string(m)
+	s, err := url.PathUnescape(data)
+	if err != nil {
+		return err.Error()
+	} else {
+		return s
+	}
 }
 
 func UrlDecode_GBK(data string) string {
-	m, _ := base64.StdEncoding.DecodeString(data)
+	s, err := url.PathUnescape(data)
+	if err != nil {
+		return err.Error()
+	}
 	decoder := simplifiedchinese.GBK.NewDecoder()
-	reader := transform.NewReader(bytes.NewReader(m), decoder)
-	d, _ := ioutil.ReadAll(reader)
+	reader := transform.NewReader(bytes.NewReader([]byte(s)), decoder)
+	d, err := ioutil.ReadAll(reader)
+	if err != nil {
+		return err.Error()
+	}
 	return string(d)
 }
 

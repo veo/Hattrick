@@ -3,5 +3,5 @@ package crypto
 import "encoding/hex"
 
 func HexEncode(data string) string {
-	return hex.EncodeToString([]byte(data))
+	return "0x" + hex.EncodeToString([]byte(data))
 }

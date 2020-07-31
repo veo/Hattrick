@@ -15,19 +15,31 @@ func Base64Encode_UTF8(data string) string {
 func Base64Encode_GBK(data string) string {
 	encoder := simplifiedchinese.GBK.NewEncoder()
 	reader := transform.NewReader(bytes.NewReader([]byte(data)), encoder)
-	d, _ := ioutil.ReadAll(reader)
+	d, err := ioutil.ReadAll(reader)
+	if err != nil {
+		return err.Error()
+	}
 	return base64.StdEncoding.EncodeToString(d)
 }
 
 func Base64Decode_UTF8(data string) string {
-	m, _ := base64.StdEncoding.DecodeString(data)
+	m, err := base64.StdEncoding.DecodeString(data)
+	if err != nil {
+		return err.Error()
+	}
 	return string(m)
 }
 
 func Base64Decode_GBK(data string) string {
-	m, _ := base64.StdEncoding.DecodeString(data)
+	m, err := base64.StdEncoding.DecodeString(data)
+	if err != nil {
+		return err.Error()
+	}
 	decoder := simplifiedchinese.GBK.NewDecoder()
 	reader := transform.NewReader(bytes.NewReader(m), decoder)
-	d, _ := ioutil.ReadAll(reader)
+	d, err := ioutil.ReadAll(reader)
+	if err != nil {
+		return err.Error()
+	}
 	return string(d)
 }

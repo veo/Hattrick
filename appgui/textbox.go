@@ -42,14 +42,14 @@ func (t *Textbox) InputBox() fyne.CanvasObject {
 	t.InputText = widget.NewMultiLineEntry()
 	t.InputText.Wrapping = fyne.TextWrapWord
 	t.InputText.SetPlaceHolder("inputText")
-	box := BorderBody(1040, 140, t.InputText)
+	box := BorderBody(1050, 190, t.InputText)
 	return box
 }
 func (t *Textbox) EncodeBox() fyne.CanvasObject {
 	t.EncodeText = widget.NewMultiLineEntry()
 	t.EncodeText.Wrapping = fyne.TextWrapWord
 	t.EncodeText.SetPlaceHolder("encodeText")
-	box := BorderBody(1040, 140, t.EncodeText)
+	box := BorderBody(1050, 190, t.EncodeText)
 	return box
 }
 
@@ -57,6 +57,6 @@ func (t *Textbox) DecodeBox() fyne.CanvasObject {
 	t.DecodeText = widget.NewMultiLineEntry()
 	t.DecodeText.Wrapping = fyne.TextWrapWord
 	t.DecodeText.SetPlaceHolder("decodeText")
-	box := BorderBody(1040, 140, t.DecodeText)
+	box := BorderBody(1050, 190, t.DecodeText)
 	return box
 }

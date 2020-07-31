@@ -1,26 +1,23 @@
 package crypto
 
-func Htmltest(s string) string {
-	hexCount := 0
-	for i := 0; i < len(s); i++ {
-		hexCount++
-	}
-	var buf [64]byte
-	var t []byte
+import "fmt"
 
-	required := len(s) + 2*hexCount
-	if required <= len(buf) {
-		t = buf[:required]
-	} else {
-		t = make([]byte, required)
+func HtmlEncode_Dec(data string) string {
+	var result string
+	array := []rune(data)
+	n := len(array)
+	for i := 0; i < n; i++ {
+		result += fmt.Sprint("&#", array[i]) + ";"
 	}
-	j := 0
-	for i := 0; i < len(s); i++ {
-		c := s[i]
-		t[j] = '%'
-		t[j+1] = "0123456789ABCDEF"[c>>4]
-		t[j+2] = "0123456789ABCDEF"[c&15]
-		j += 3
+	return result
+}
+
+func HtmlEncode_Hex(data string) string {
+	var result string
+	array := []rune(data)
+	n := len(array)
+	for i := 0; i < n; i++ {
+		result += "&#x" + fmt.Sprintf("%X", array[i]) + ";"
 	}
-	return string(t)
+	return result
 }
