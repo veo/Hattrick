@@ -6,6 +6,7 @@ import (
 	"fyne.io/fyne/layout"
 	"fyne.io/fyne/widget"
 	"github.com/veo/Hattrick/crypto"
+	"net/url"
 )
 
 func Loadui() {
@@ -13,6 +14,14 @@ func Loadui() {
 	//app.SetIcon(fyne.NewStaticResource("Icon.png", static.IconPNG))
 	app.Settings().SetTheme(&HatTrickTheme{})
 	w := app.NewWindow("Hattrick")
+	blog, err := url.Parse("https://xwhoami.com")
+	if err != nil {
+		fyne.LogError("Could not parse URL", err)
+	}
+	github, err := url.Parse("https://github.com/veo")
+	if err != nil {
+		fyne.LogError("Could not parse URL", err)
+	}
 	textbox := &Textbox{}
 	w.SetContent(widget.NewVBox(
 		textbox.InputBox(),
@@ -51,7 +60,7 @@ func Loadui() {
 		),
 		),
 		textbox.DecodeBox(),
-		widget.NewLabel("123"),
+		widget.NewHBox(layout.NewSpacer(), widget.NewLabel("作者: veo "), widget.NewHyperlink("blog", blog), widget.NewHyperlink("github", github), layout.NewSpacer()),
 	))
 	w.Resize(fyne.NewSize(1200, 750))
 	w.ShowAndRun()
