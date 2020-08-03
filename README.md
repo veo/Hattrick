@@ -8,12 +8,13 @@ Hattrick
 Hattrick 是一款简单、快速的跨平台网络安全编码转换工具。
 
 ## 下载
- * [点击下载 windows](https://github.com/veo/Hattrick/releases/latest)
-
+ * [windows 点击下载](https://github.com/veo/Hattrick/releases/download/1.0.0/Hattrick.exe_windows.zip)
+ * [macos 点击下载](https://github.com/veo/Hattrick/releases/download/1.0.0/Hattrick_macos.dmg)
+ * [linux 点击下载](https://github.com/veo/Hattrick/releases/download/1.0.0/Hattrick_linux_amd64.tar.gz)
 ## 支持操作系统
  * Windows
- * Linux
  * MacOS
+ * Linux (Linux中文支持需要自己配字体)
  * Android
  * Ios
 
