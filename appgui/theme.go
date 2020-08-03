@@ -4,7 +4,25 @@ import (
 	"fyne.io/fyne"
 	"fyne.io/fyne/theme"
 	"image/color"
+	"runtime"
 )
+
+func font() fyne.Resource {
+	if runtime.GOOS == `windows` {
+		font, err := fyne.LoadResourceFromPath(`C:\Windows\Fonts\simhei.ttf`)
+		if err != nil {
+			font = theme.LightTheme().TextFont()
+		}
+		return font
+	} else if runtime.GOOS == `darwin` {
+		font, err := fyne.LoadResourceFromPath(`/Library/Fonts/Arial Unicode.ttf`)
+		if err != nil {
+			font = theme.LightTheme().TextFont()
+		}
+		return font
+	}
+	return theme.LightTheme().TextFont()
+}
 
 type HatTrickTheme struct{}
 
@@ -16,12 +34,12 @@ func (HatTrickTheme) PlaceHolderColor() color.Color     { return theme.LightThem
 func (HatTrickTheme) PrimaryColor() color.Color         { return theme.LightTheme().PrimaryColor() }
 func (HatTrickTheme) FocusColor() color.Color           { return theme.LightTheme().FocusColor() }
 func (HatTrickTheme) ScrollBarColor() color.Color       { return theme.LightTheme().ScrollBarColor() }
-func (HatTrickTheme) TextSize() int                     { return 10 }
-func (HatTrickTheme) TextFont() fyne.Resource           { return cnfont }
-func (HatTrickTheme) TextBoldFont() fyne.Resource       { return cnfont }
-func (HatTrickTheme) TextItalicFont() fyne.Resource     { return cnfont }
-func (HatTrickTheme) TextBoldItalicFont() fyne.Resource { return cnfont }
-func (HatTrickTheme) TextMonospaceFont() fyne.Resource  { return cnfont }
+func (HatTrickTheme) TextSize() int                     { return 11 }
+func (HatTrickTheme) TextFont() fyne.Resource           { return font() }
+func (HatTrickTheme) TextBoldFont() fyne.Resource       { return font() }
+func (HatTrickTheme) TextItalicFont() fyne.Resource     { return font() }
+func (HatTrickTheme) TextBoldItalicFont() fyne.Resource { return font() }
+func (HatTrickTheme) TextMonospaceFont() fyne.Resource  { return font() }
 func (HatTrickTheme) Padding() int                      { return theme.LightTheme().Padding() }
 func (HatTrickTheme) IconInlineSize() int               { return theme.LightTheme().IconInlineSize() }
 func (HatTrickTheme) ScrollBarSize() int                { return theme.LightTheme().ScrollBarSize() }

@@ -1,6 +1,6 @@
 Hattrick
 ================================
-[![GitHub release](https://github.com/veo/Hattrick/releases/latest)
+![GitHub release](https://github.com/veo/Hattrick/releases/latest)
 
 ![Hattrick Screenshot](https://github.com/veo/Hattrick/raw/master/screenshot.png)
 

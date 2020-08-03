@@ -10,11 +10,10 @@ import (
 
 func Loadui() {
 	app := app.New()
-	app.SetIcon(appicon)
+	//app.SetIcon(fyne.NewStaticResource("Icon.png", static.IconPNG))
 	app.Settings().SetTheme(&HatTrickTheme{})
 	w := app.NewWindow("Hattrick")
 	textbox := &Textbox{}
-	//w.SetContent(appgui.Button())
 	w.SetContent(widget.NewVBox(
 		textbox.InputBox(),
 		widget.NewHScrollContainer(fyne.NewContainerWithLayout(layout.NewGridLayout(10),
@@ -45,13 +44,14 @@ func Loadui() {
 		),
 		textbox.EncodeBox(),
 		widget.NewHScrollContainer(fyne.NewContainerWithLayout(layout.NewGridLayout(10),
-			widget.NewButton("Base64解码_GBK", func() { textbox.DecodeText.SetText(crypto.Base64Decode_GBK(textbox.EncodeText.Text)) }),
-			widget.NewButton("Base64解码_UTF8", func() { textbox.DecodeText.SetText(crypto.Base64Decode_UTF8(textbox.EncodeText.Text)) }),
-			widget.NewButton("URL解码_GBK", func() { textbox.DecodeText.SetText(crypto.UrlDecode_GBK(textbox.EncodeText.Text)) }),
-			widget.NewButton("URL解码_UTF8", func() { textbox.DecodeText.SetText(crypto.UrlDecode_UTF8(textbox.EncodeText.Text)) }),
+			widget.NewButton("Base64_GBK", func() { textbox.DecodeText.SetText(crypto.Base64Decode_GBK(textbox.EncodeText.Text)) }),
+			widget.NewButton("Base64_UTF8", func() { textbox.DecodeText.SetText(crypto.Base64Decode_UTF8(textbox.EncodeText.Text)) }),
+			widget.NewButton("URL_GBK", func() { textbox.DecodeText.SetText(crypto.UrlDecode_GBK(textbox.EncodeText.Text)) }),
+			widget.NewButton("URL_UTF8", func() { textbox.DecodeText.SetText(crypto.UrlDecode_UTF8(textbox.EncodeText.Text)) }),
 		),
 		),
 		textbox.DecodeBox(),
+		widget.NewLabel("123"),
 	))
 	w.Resize(fyne.NewSize(1200, 750))
 	w.ShowAndRun()
