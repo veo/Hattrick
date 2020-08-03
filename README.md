@@ -2,7 +2,7 @@ Hattrick
 ================================
 ![GitHub release](https://github.com/veo/Hattrick/releases/latest)
 
-![Hattrick Screenshot](https://github.com/veo/Hattrick/raw/master/screenshot.gif)
+![Hattrick Screenshot](https://github.com/veo/Hattrick/raw/master/screenshot.png)
 
 
 Hattrick 是一款简单、快速的跨平台网络安全编码转换工具。
